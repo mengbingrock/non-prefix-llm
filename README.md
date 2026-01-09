@@ -9,6 +9,10 @@ RepoAgent[[12]](#references), automates documentation generation for code reposi
 
 In benchmarks conducted by LMCache[[11]](#references), prefix-based caching achieved less than 5% hit rate in this scenario, while non-prefix caching reached over 70% hit rate—demonstrating the significant advantage of position-independent caching for recursive agent workflows. 
 
+Result for RepoAgent by LMCache:
+
+![Cache Hit Rate vs Pool Size Graph](https://github.com/yamazakihirofumi/lmcache-agent-trace/blob/main/RepoAgent_result/RepoAgent_result.png?raw=true)
+
 
 
 ---
@@ -16,6 +20,12 @@ In benchmarks conducted by LMCache[[11]](#references), prefix-based caching achi
 ## Context Editing
 
 Examples include Claude Code Context editing APIs, supporting removing thinking block and tool-call results if later turns, and MemGPT (Letta)[[10]](#references), dynamicly changing chat history when user asks to. Recent work on lightweight memory-augmented generation [[7]](#references) and effective KV cache reuse [[8]](#references) further explores these paradigms.
+
+MemGPT result from LMCache:
+![Cache Hit Rate Graph](https://github.com/LMCache/lmcache-agent-trace/blob/main/memgpt_result/memgpt1_chunk_size_16.png?raw=true)
+
+
+
 
 ExpRAG [[13]](#references), a highly optimized RAG pipeline, features dynamic memory that retrieves the top-K most relevant entries based on context. Since the retrieved memories vary unpredictably and appear non-contiguously from the memory pool, prefix caching struggles to find matches. Substring matching with concatenation proves far more effective in this scenario.
 
