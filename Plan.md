@@ -2,11 +2,11 @@
 
 ## Project 1: Build an AI Agent Maximizing Non-Prefix Caching
 
-Design an agent framework that maximizes cache hit rates, especially in scenarios where prefix-matching fails and substring matching becomes essential.
+LMCache uniquely offers non-prefix caching—a capability that provides significant gains where prefix-matching fails and substring matching becomes essential. The goal is to design an agent framework that maximizes these non-prefix cache hit rates.
 
 Current agents use traditional append-only workflows and either forget or summarize context when the length limit is reached. They do not leverage context editing techniques that boost performance—and coincidentally cause prefix matching to fail.
 
-We plan to integrate these two new techniques into the current append-only workflow:
+We plan to deprecate the append-only workflow and replace it with these two techniques:
 
 ### Technique 1: Dynamic Memory Pool with Context Editing
 
