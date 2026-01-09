@@ -17,10 +17,13 @@ In benchmarks conducted by LMCache[[11]](#references), prefix-based caching achi
 
 Examples include Claude Code Context editing APIs, supporting removing thinking block and tool-call results if later turns, and MemGPT (Letta)[[10]](#references), dynamicly changing chat history when user asks to. Recent work on lightweight memory-augmented generation [[7]](#references) and effective KV cache reuse [[8]](#references) further explores these paradigms.
 
+ExpRAG [[13]](#references), a highly optimized RAG pipeline, features dynamic memory that retrieves the top-K most relevant entries based on context. Since the retrieved memories vary unpredictably and appear non-contiguously from the memory pool, prefix caching struggles to find matches. Substring matching with concatenation proves far more effective in this scenario.
+
 **Resources:**
 - [Context Editing Documentation](https://platform.claude.com/docs/en/build-with-claude/context-editing)
 - [Memory Tool Documentation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool)
 - [MemGPT Agent Trace Dataset](https://github.com/LMCache/lmcache-agent-trace/blob/main/memgpt/memgpt1.jsonl)
+
 
 ---
 
@@ -96,3 +99,5 @@ This compilation process is dynamic; DSPy may reorder instructions, swap out few
 [11] yamazakihirofumi. (2026). Add RepoAgent trace (Pull Request #1) [Source code]. GitHub. https://github.com/LMCache/lmcache-agent-trace/pull/1
 
 [12] OpenBMB. (2024). RepoAgent (Version 0.2.0) [Computer software]. GitHub. https://github.com/OpenBMB/RepoAgent
+
+[13] Wei, T., Sachdeva, N., Coleman, B., He, Z., Bei, Y., Ning, X., Ai, M., Li, Y., He, J., Chi, E. H., Wang, C., Chen, S., Pereira, F., Kang, W., & Cheng, D. Z. (2025). Evo-Memory: Benchmarking LLM agent test-time learning with self-evolving memory (arXiv:2511.20857). arXiv. https://arxiv.org/abs/2511.20857
