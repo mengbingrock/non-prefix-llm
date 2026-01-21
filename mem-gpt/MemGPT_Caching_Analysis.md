@@ -10,7 +10,7 @@ MemGPT is an innovative system that enables LLMs to manage their own memory, eff
 
 The architecture consists of three main layers:
 
-### 1. LLM Context Window (Finite, e.g., 8k tokens)
+### 1. LLM Context Window
 
 The context window is divided into distinct sections:
 
@@ -47,11 +47,11 @@ TURN 1 PROMPT                              TURN 2 PROMPT
 │ System Instruct.  │ ← MATCH              │ System Instruct.  │
 ├───────────────────┤                      ├───────────────────┤
 │ Working Context:  │                      │ Working Context:  │
-│ user: "Alice"     │ ← MATCH              │ user: "Alice"     │
-│ mood: "happy"     │                      │ mood: "curious"   │ ← UPDATED!
+│ User: "Alice"     │ ← MATCH              │ User: "Alice"     │
+│                   │                      │ Born in: 1999     │ ← UPDATED!
 ├───────────────────┤  PREFIX              ├───────────────────┤
 │ FIFO Queue:       │  BREAKS              │ FIFO Queue:       │
-│ [msg1, msg2]      │  HERE ✗              │ [msg2, msg3, msg4]│ ← SHIFTED!
+│ [msg1, msg2, msg3]|  HERE ✗              │ [msg2, msg3, msg4]│ ← SHIFTED!
 ├───────────────────┤                      ├───────────────────┤
 │ Retrieved from    │                      │ Retrieved from    │
 │ Archival: Doc_A   │  SAME                │ Archival: Doc_A   │ ← SAME CONTENT
@@ -61,7 +61,7 @@ TURN 1 PROMPT                              TURN 2 PROMPT
          └──────────────┬───────────────────────────┘
                         ▼
         ┌───────────────────────────────────────┐
-        │  ❌ PREFIX CACHE: ~0% REUSE           │
+        │  ❌ PREFIX CACHE: very low reuse rate │
         │                                       │
         │  • Working Context updates break      │
         │    prefix after system instructions   │
