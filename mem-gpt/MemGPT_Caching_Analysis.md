@@ -132,7 +132,9 @@ Position 2500-3500:                       Position 4000-5000:
 
 ## Empirical Results: LMCache Agent Trace
 
-The [LMCache MemGPT benchmark results](https://github.com/LMCache/lmcache-agent-trace/tree/main/memgpt_result) demonstrate the dramatic difference:
+he [LMCache MemGPT benchmark results](https://github.com/LMCache/lmcache-agent-trace/tree/main/memgpt_result) demonstrate the dramatic difference:
+
+![LMCache MemGPT benchmark results](https://raw.githubusercontent.com/LMCache/lmcache-agent-trace/main/memgpt_result/memgpt1.png)
 
 ### Observed Cache Performance
 
@@ -153,30 +155,22 @@ The [LMCache MemGPT benchmark results](https://github.com/LMCache/lmcache-agent-
 
 ### Quantified Benefits
 
-```
-TYPICAL MEMGPT PROMPT (~6000 tokens)
-════════════════════════════════════
+### What Can Be Cached and Reused
 
-┌────────────────────────────────────────────────────────┐
-│ System Instructions    │████████████████│  2000 tokens │
-│                        │    CACHED      │              │
-├────────────────────────────────────────────────────────┤
-│ Working Context        │░░░░            │   500 tokens │
-│                        │   DYNAMIC      │              │
-├────────────────────────────────────────────────────────┤
-│ FIFO Queue             │░░░░░░░░        │  1500 tokens │
-│ (recent messages)      │   DYNAMIC      │              │
-├────────────────────────────────────────────────────────┤
-│ Retrieved Archival     │████████        │  1500 tokens │
-│                        │    CACHED      │   (if same)  │
-├────────────────────────────────────────────────────────┤
-│ Function Definitions   │████            │   500 tokens │
-│                        │    CACHED      │              │
-└────────────────────────────────────────────────────────┘
+CACHEABLE BLOCKS + TYPICAL MEMGPT PROMPT (~6000 tokens)
 
-PREFIX CACHING:    ~2000 / 6000 = 33% MAX (often less due to working context)
-SUBSTRING CACHING: ~4000 / 6000 = 67%+ (system + archival + functions)
-```
+| Block | Cacheability | Token share | Notes |
+|-------|--------------|-------------|-------|
+| System Instructions | CACHED | ~2000 | Static across turns (reusable) |
+| Working Context | DYNAMIC | ~500 | Not cacheable |
+| FIFO Queue (recent messages) | DYNAMIC | ~1500 | Recent messages |
+| Retrieved Archival | CACHED | ~1500 | Reusable if same doc |
+| Function Definitions | CACHED | ~500 | Tool schemas are static |
+| Recalled Conversations | CACHED | variable | Reusable if recalled |
+
+PREFIX CACHING:    ~2500 / 6000 = ~42% (often less due to working context).
+
+SUBSTRING CACHING: > 5500 / 6000 = 90%+ (system + archival + functions)
 
 ---
 
