@@ -8,13 +8,20 @@ Current agents use traditional append-only workflows and either forget or summar
 
 We plan to deprecate the append-only workflow and replace it with these two techniques:
 
-### Technique 1: More Direct Context Editing
+### Technique 1: LMcache to Support Graph Based Agent Memory
 
 Direct Context Editing changed traditional append-only mode and prefix match fails, where opportunity for subtring could be. Build a memory pool similar to the open-source LightMem [[1]](#references) with frequently edited memory, using context editing as demonstrated in MemGPT [[2]](#references). This approach achieves twice the hit rate through substring matching [[3]](#references) [[4]](#references) in cases where prefix matching fails but substring matching succeeds.
 
 LMCache can cache these memory blocks when possible, and they can be retrieved later in blocks during user sessions.
 
-### Technique 2: Structured Schema for Agent Interactions
+### Technique 2: Use reasoning based RAG 
+
+Support Cache Hit while performing reasoning. In this PageIndex[[9]](#references), it reasoning based on 'Table of Contents', We could cache the Contents and do prefeching for detailed data.
+
+
+
+
+### Technique 3: Structured Schema for Agent Interactions
 
 Define a structured schema/template for agent interactions, similar to the Prompt Markup Language (PML) in Prompt Cache [[5]](#references). This system will enable:
 
@@ -62,3 +69,5 @@ Standard prefix-based caching relies on the assumption that the beginning of a p
 [7] Qiu, Z., Wang, Z., Zheng, B., Huang, Z., Wen, K., Yang, S., Men, R., Yu, L., Huang, F., Huang, S., Liu, D., Zhou, J., & Lin, J. (2025). *Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free.* [arXiv:2505.06708](https://arxiv.org/abs/2505.06708)
 
 [8] Yang, B., Leng, Q., Zeng, J., & Wu, Z. (2025). *CacheClip: Accelerating RAG with Effective KV Cache Reuse.* [arXiv:2510.10129](https://arxiv.org/abs/2510.10129)
+
+[9] PageIndex, https://pageindex.ai/blog/pageindex-intro
