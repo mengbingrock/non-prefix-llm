@@ -8,9 +8,9 @@ Current agents use traditional append-only workflows and either forget or summar
 
 We plan to deprecate the append-only workflow and replace it with these two techniques:
 
-### Technique 1: Dynamic Memory Pool with Context Editing
+### Technique 1: More Direct Context Editing
 
-Build a memory pool similar to the open-source LightMem [[1]](#references) with frequently edited memory, using context editing as demonstrated in MemGPT [[2]](#references). This approach achieves twice the hit rate through substring matching [[3]](#references) [[4]](#references) in cases where prefix matching fails but substring matching succeeds.
+Direct Context Editing changed traditional append-only mode and prefix match fails, where opportunity for subtring could be. Build a memory pool similar to the open-source LightMem [[1]](#references) with frequently edited memory, using context editing as demonstrated in MemGPT [[2]](#references). This approach achieves twice the hit rate through substring matching [[3]](#references) [[4]](#references) in cases where prefix matching fails but substring matching succeeds.
 
 LMCache can cache these memory blocks when possible, and they can be retrieved later in blocks during user sessions.
 
