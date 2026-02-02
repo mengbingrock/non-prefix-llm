@@ -14,12 +14,9 @@ Direct Context Editing changed traditional append-only mode and prefix match fai
 
 LMCache can cache these memory blocks when possible, and they can be retrieved later in blocks during user sessions.
 
-### Technique 2: Use reasoning based RAG 
+### Technique 2: Cache reasoning based RAG 
 
-Support Cache Hit while performing reasoning. In this PageIndex[[9]](#references), it reasoning based on 'Table of Contents', We could cache the Contents and do prefeching for detailed data.
-
-
-
+Support Cache Hit while performing reasoning. In this PageIndex[[9]](#references), it reasoning based on 'Table of Contents', We could cache the Contents and do prefeching for detailed data. They could use similiar method in the [[10]](#references) to add tool use in reasoning step, to do multiple hop retrival and reasoning.
 
 ### Technique 3: Structured Schema for Agent Interactions
 
@@ -71,3 +68,5 @@ Standard prefix-based caching relies on the assumption that the beginning of a p
 [8] Yang, B., Leng, Q., Zeng, J., & Wu, Z. (2025). *CacheClip: Accelerating RAG with Effective KV Cache Reuse.* [arXiv:2510.10129](https://arxiv.org/abs/2510.10129)
 
 [9] PageIndex, https://pageindex.ai/blog/pageindex-intro
+
+[10] Recall, https://attractive-almandine-935.notion.site/ReCall-Learning-to-Reason-with-Tool-Call-for-LLMs-via-Reinforcement-Learning-1d7aec91e9bb8006ad40f9edbfe2191a
