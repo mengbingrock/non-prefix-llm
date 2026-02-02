@@ -2,6 +2,8 @@
 
 ## Project 1: Build an AI Agent Maximizing Non-Prefix Caching
 
+Agent Example: MemBox[[10]](#references), 2000+ loc, sota in many dataset.
+
 LMCache uniquely offers non-prefix caching—a capability that provides significant gains where prefix-matching fails and substring matching becomes essential. The goal is to design an agent framework that maximizes these non-prefix cache hit rates.
 
 Current agents use traditional append-only workflows and either forget or summarize context when the length limit is reached. They do not leverage context editing techniques that boost performance—and coincidentally cause prefix matching to fail.
@@ -16,7 +18,7 @@ LMCache can cache these memory blocks when possible, and they can be retrieved l
 
 ### Technique 2: Cache reasoning based RAG 
 
-Support Cache Hit while performing reasoning. In this PageIndex[[9]](#references), it reasoning based on 'Table of Contents', We could cache the Contents and do prefeching for detailed data. They could use similiar method in the [[10]](#references) to add tool use in reasoning step, to do multiple hop retrival and reasoning.
+Support Cache Hit while performing reasoning. In this PageIndex[[9]](#references), it reasoning based on 'Table of Contents', We could cache the Contents and do prefeching for detailed data. They could use similiar method in the [[10]](#references) to add tool use in reasoning step, to do multiple hop retrival and reasoning. 
 
 ### Technique 3: Structured Schema for Agent Interactions
 
@@ -70,3 +72,5 @@ Standard prefix-based caching relies on the assumption that the beginning of a p
 [9] PageIndex, https://pageindex.ai/blog/pageindex-intro
 
 [10] Recall, https://attractive-almandine-935.notion.site/ReCall-Learning-to-Reason-with-Tool-Call-for-LLMs-via-Reinforcement-Learning-1d7aec91e9bb8006ad40f9edbfe2191a
+
+[11] MemBox, https://github.com/nnnoidea/Membox
