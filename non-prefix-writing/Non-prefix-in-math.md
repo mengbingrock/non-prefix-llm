@@ -30,7 +30,7 @@ $$
 **Mem0 (Selective)**
 
 $$
-W_{\text{new}} = W_{\text{old}} \cup \text{Top}k(\text{Sim}(q, D_{\text{vec}}))
+W_{\text{new}} = W_{\text{old}} \cup \text{Top}_{k}(\text{Sim}(q, D_{\text{vec}}))
 $$
 
 ---
@@ -42,14 +42,14 @@ $$
 $$
 D_{\text{total}} = \bigcup_{i=1}^{n} P_i
 \;\Rightarrow\;
-\text{Result} = \text{Agg}\big(\{ \text{Process}(P_i) \}\big)
+\text{Result} = \text{Agg}\big(\{ \text{Process}(P_{i}) \}\big)
 $$
 
-The dataset is partitioned into isolated domains $P_i$, processed independently and aggregated.
+The dataset is partitioned into isolated domains $P_{i}$, processed independently and aggregated.
 
 **GraphRAG**
 
-- $P_i$ correspond to graph communities  
+- $P_{i}$ correspond to graph communities  
 - Local summaries are generated independently  
 - Results are aggregated via Map–Reduce  
 
@@ -63,7 +63,7 @@ Letta treats memory as an explicit, agent-controlled operating system resource.
 
 **State Definition**
 
-Let \(S_t = \{B_{\text{human}}, B_{\text{persona}}\}\) be the core memory blocks, and \(\pi(S_t, I_t)\) be the agent policy producing an action \(a\).
+Let $S_{t} = \{B_{\text{human}}, B_{\text{persona}}\}$ be the core memory blocks, and $\pi(S_{t}, I_{t})$ be the agent policy producing an action $a$.
 
 **Update Function**
 
@@ -71,9 +71,9 @@ Memory evolves only when the agent emits an explicit write action:
 
 $$
 S_{t+1} = \begin{cases}
-S_t \text{ with } B_i \leftarrow \text{content} & \text{if } a = \mathtt{core\_memory\_replace}(B_i, \text{content}) \\
-S_t \text{ with } B_i \leftarrow B_i \oplus \text{content} & \text{if } a = \mathtt{core\_memory\_append}(B_i, \text{content}) \\
-S_t & \text{otherwise}
+S_{t} \text{ with } B_{i} \leftarrow \text{content} & \text{if } a = \mathtt{core\_memory\_replace}(B_{i}, \text{content}) \\
+S_{t} \text{ with } B_{i} \leftarrow B_{i} \oplus \text{content} & \text{if } a = \mathtt{core\_memory\_append}(B_{i}, \text{content}) \\
+S_{t} & \text{otherwise}
 \end{cases}
 $$
 
