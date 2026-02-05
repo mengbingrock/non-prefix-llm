@@ -69,7 +69,9 @@ Let $S_{t} = \{B_{\text{human}}, B_{\text{persona}}\}$ be the core memory blocks
 
 Memory evolves only when the agent emits an explicit write action:
 
-$$S_{t+1} = \begin{cases} S_{t} \text{ with } B_{i} \leftarrow \text{content} & \text{if } a = {\mathtt{core\text{-}memory\text{-}replace}}(B_{i}, \text{content}) \\ S_{t} \text{ with } B_{i} \leftarrow B_{i} \oplus \text{content} & \text{if } a = {\mathtt{core\text{-}memory\text{-}append}}(B_{i}, \text{content}) \\ S_{t} & \text{otherwise} \end{cases}$$
+- $S_{t+1} = S_{t}$ with $B_{i} \leftarrow \text{content}$, if $a = {\mathtt{core\text{-}memory\text{-}replace}}(B_{i}, \text{content})$
+- $S_{t+1} = S_{t}$ with $B_{i} \leftarrow B_{i} \oplus \text{content}$, if $a = {\mathtt{core\text{-}memory\text{-}append}}(B_{i}, \text{content})$
+- $S_{t+1} = S_{t}$, otherwise
 
 **Operation Semantics**
 
