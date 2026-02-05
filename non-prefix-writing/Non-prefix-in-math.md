@@ -71,8 +71,8 @@ Memory evolves only when the agent emits an explicit write action:
 
 $$
 S_{t+1} = \begin{cases}
-S_t \text{ with } B_i \leftarrow \text{content} & \text{if } a = \text{core\_memory\_replace}(B_i, \text{content}) \\
-S_t \text{ with } B_i \leftarrow B_i \oplus \text{content} & \text{if } a = \text{core\_memory\_append}(B_i, \text{content}) \\
+S_t \text{ with } B_i \leftarrow \text{content} & \text{if } a = \mathtt{core\_memory\_replace}(B_i, \text{content}) \\
+S_t \text{ with } B_i \leftarrow B_i \oplus \text{content} & \text{if } a = \mathtt{core\_memory\_append}(B_i, \text{content}) \\
 S_t & \text{otherwise}
 \end{cases}
 $$
